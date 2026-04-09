@@ -101,7 +101,7 @@ const ADVANTAGES = [
 
 export default function ServicesPage() {
   return (
-    <main className="pt-20 sm:pt-24 md:pt-28">
+    <main className="pt-32 sm:pt-32 md:pt-28">
       <section className="px-4 sm:px-6 md:px-12 max-w-[1440px] mx-auto mb-12 sm:mb-16 md:mb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-end">
           <div className="lg:col-span-8">

@@ -82,88 +82,100 @@ export default function EmailMarketingPage() {
 
   return (
     <main className="pt-24 sm:pt-32">
-      <section className="px-4 sm:px-6 md:px-12 pt-16 sm:pt-20 pb-16 sm:pb-20 md:pb-24 max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-8">
-          <motion.span
-            className="inline-block mb-6 px-4 py-1.5 bg-[#f3f4f5] text-[#434842] font-label text-xs font-bold uppercase tracking-[0.2em] rounded-full"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0}
-          >
-            Email Marketing &amp; Automation
-          </motion.span>
-          <motion.h1
-            className="font-heading text-[2.8rem] sm:text-[3.5rem] md:text-[4.5rem] leading-[1.1] font-bold text-[#000000] tracking-tight mb-8"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={1}
-          >
-            Owned Growth Through <br />
-            <span className="text-[#0f1f12]/40">Automation.</span>
-          </motion.h1>
-          <motion.p
-            className="font-body text-base sm:text-lg md:text-xl text-[#434842] max-w-2xl leading-relaxed"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={2}
-          >
-            Stop renting your audience from social algorithms. We build
-            high-conversion lifecycle ecosystems that turn passive subscribers
-            into loyal brand advocates on autopilot.
-          </motion.p>
-          <motion.div
-            className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={3}
-          >
-            <button
-              className="bg-[#0f1f12] text-white px-8 sm:px-10 py-4 rounded-lg font-heading font-bold text-sm sm:text-base hover:opacity-90 transition-all cursor-pointer w-full sm:w-auto"
-              style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}
+      <section className="relative overflow-hidden px-4 sm:px-6 md:px-12 pt-16 sm:pt-20 pb-16 sm:pb-20 md:pb-24 max-w-[1440px] mx-auto">
+        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* TEXT SIDE */}
+          <div className="lg:col-span-8 relative z-10">
+            <motion.span
+              className="inline-block mb-6 px-4 py-1.5 bg-[#f3f4f5] text-[#434842] font-label text-xs font-bold uppercase tracking-[0.2em] rounded-full"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={0}
             >
-              Request Email Audit
-            </button>
-            <button className="bg-transparent text-[#000000] px-8 sm:px-10 py-4 rounded-lg font-heading font-bold text-sm sm:text-base border border-[#000000]/10 hover:bg-[#f3f4f5] transition-all cursor-pointer w-full sm:w-auto">
-              View Results
-            </button>
-          </motion.div>
-        </div>
+              Email Marketing &amp; Automation
+            </motion.span>
 
-        <div className="lg:col-span-4 relative mt-12 lg:mt-0">
-          <motion.div
-            className="relative aspect-[4/5] rounded-xl overflow-hidden bg-[#e7e8e9]"
-            style={{ boxShadow: "0 25px 60px rgba(0,0,0,0.18)" }}
-            variants={scaleIn}
-            initial="hidden"
-            animate="visible"
-          >
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-InhSOkJ-O9_3FfRnuXHxtG2qrFyC8_NOKlFRB51lnlKbyKtDy592dcPsTj7n9SCHFazOhe6NqVXDFkMINQrp9pUyHt-5EKCx9eC4wSRnzI8E6XU_2SNGOS0x4_1USpceGiC0A89Qgq62GIY14aSIw8iNE5goLuIApg8LwSHJtm6zxdYOcol2PepKOM_nEpeJ0r1FVMMMlp1kZ75qhVdX9PYiOm0lLw1blot3n5zccma7yi_Ca4VGq3YZ5Uu6JxomAIMulmFo0NU"
-              alt="Close-up of a minimalist workspace with a tablet displaying complex marketing analytics"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-            />
-          </motion.div>
-          <motion.div
-            className="absolute -bottom-8 -left-8 bg-[#c8960c] p-8 rounded-xl max-w-[240px]"
-            style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.15)" }}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={4}
-          >
-            <p className="font-heading font-bold text-4xl text-white leading-tight">
-              $5M+
-            </p>
-            <p className="font-label text-xs font-bold uppercase tracking-widest text-white mt-2">
-              Revenue Attributed for Retail Client
-            </p>
-          </motion.div>
+            <motion.h1
+              className="font-heading text-[2.5rem] sm:text-[3.2rem] md:text-[4.2rem] leading-[1.1] font-bold text-[#000000] tracking-tight mb-6"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={1}
+            >
+              Owned Growth Through <br />
+              <span className="text-[#0f1f12]/40">Automation.</span>
+            </motion.h1>
+
+            <motion.p
+              className="font-body text-base sm:text-lg md:text-xl text-[#434842] max-w-2xl leading-relaxed"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={2}
+            >
+              Stop renting your audience from social algorithms. We build
+              high-conversion lifecycle ecosystems that turn passive subscribers
+              into loyal brand advocates on autopilot.
+            </motion.p>
+
+            <motion.div
+              className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={3}
+            >
+              <button
+                className="bg-[#0f1f12] text-white px-8 sm:px-10 py-4 rounded-lg font-heading font-bold text-sm sm:text-base hover:opacity-90 transition-all cursor-pointer w-full sm:w-auto"
+                style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}
+              >
+                Request Email Audit
+              </button>
+
+              <button className="bg-transparent text-[#000000] px-8 sm:px-10 py-4 rounded-lg font-heading font-bold text-sm sm:text-base border border-[#000000]/10 hover:bg-[#f3f4f5] transition-all cursor-pointer w-full sm:w-auto">
+                View Results
+              </button>
+            </motion.div>
+          </div>
+
+          {/* IMAGE SIDE */}
+          <div className="lg:col-span-4 relative z-0 mt-16 sm:mt-20 lg:mt-0">
+            <motion.div
+              className="relative aspect-[3/2] sm:aspect-[4/5] rounded-xl overflow-hidden bg-[#e7e8e9] scale-[0.96] sm:scale-100 shadow-lg sm:shadow-2xl"
+              variants={scaleIn}
+              initial="hidden"
+              animate="visible"
+            >
+              <Image
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-InhSOkJ-O9_3FfRnuXHxtG2qrFyC8_NOKlFRB51lnlKbyKtDy592dcPsTj7n9SCHFazOhe6NqVXDFkMINQrp9pUyHt-5EKCx9eC4wSRnzI8E6XU_2SNGOS0x4_1USpceGiC0A89Qgq62GIY14aSIw8iNE5goLuIApg8LwSHJtm6zxdYOcol2PepKOM_nEpeJ0r1FVMMMlp1kZ75qhVdX9PYiOm0lLw1blot3n5zccma7yi_Ca4VGq3YZ5Uu6JxomAIMulmFo0NU"
+                alt="Marketing analytics workspace"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+
+              {/* Overlay to reduce dominance */}
+              <div className="absolute inset-0 bg-[#0f1f12]/25 sm:bg-[#0f1f12]/15" />
+            </motion.div>
+
+            {/* FLOATING CARD */}
+            <motion.div
+              className="absolute -bottom-8 -left-4 sm:-left-8 bg-[#c8960c] p-6 sm:p-8 rounded-xl max-w-[220px]"
+              style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.15)" }}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={4}
+            >
+              <p className="font-heading font-bold text-3xl sm:text-4xl text-white leading-tight">
+                $5M+
+              </p>
+              <p className="font-label text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white mt-2">
+                Revenue Attributed
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -206,7 +218,7 @@ export default function EmailMarketingPage() {
                   maximize lifetime value.
                 </p>
               </div>
-              <div className="aspect-video w-full rounded-lg overflow-hidden bg-[#f3f4f5]">
+              <div className="aspect-video relative w-full rounded-lg overflow-hidden bg-[#f3f4f5]">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0ewSYCjQHKKtWp7s6lrLerPexjhQZHFHydtymjbx1NB7dGdEz7qzmiRmnq_ECajPDccwYTF9ocyRkO6YdYTpCqJa3giDrF9l2uvycXOp9mDvSQaJFcD9A4p4g7oHiBbykIQAjLxvQnsFqS3F2MfQ1IYcEr2g97Ve9HlDWFBVbqnzHkaC6M6eG6KgZt89KXZjmmtVtliwfxDJ27PH_3wLKLE6CbH3n6amaEGVdDXx8Du9ombKfxmCXDCTEU1Qdx5z-qJctLHbgiLA"
                   alt="High-end dashboard showing visual email automation flow charts"
