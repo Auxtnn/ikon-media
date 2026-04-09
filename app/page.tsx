@@ -1,5 +1,6 @@
 "use client";
-
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -16,8 +17,10 @@ import {
   User,
   Star,
 } from "lucide-react";
+
 import { motion } from "framer-motion";
 import { Variants } from "framer-motion";
+import { StatItem } from "@/components/StatItem";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -25,14 +28,6 @@ const fadeUp: Variants = {
     opacity: 1,
     y: 0,
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 },
-  }),
-};
-
-const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    transition: { duration: 0.5, ease: "easeOut", delay: i * 0.1 },
   }),
 };
 
@@ -46,13 +41,11 @@ const scaleIn: Variants = {
 };
 
 const STATS = [
-  { value: "$2B+", label: "Revenue Generated" },
-  { value: "127+", label: "Global Clients" },
-  { value: "94%", label: "Client Retention" },
-  { value: "15+", label: "Years Experience" },
+  { value: 10, suffix: "+", label: "Countries" },
+  { value: 127, suffix: "+", label: "Global Clients" },
+  { value: 94, suffix: "%", label: "Client Retention" },
+  { value: 10, suffix: "+", label: "Years Experience" },
 ];
-
-const BRANDS = ["NIKE", "FORBES", "SAMSUNG", "HUBLOT", "PORSCHE", "ADIDAS"];
 
 const SERVICES = [
   {
@@ -160,6 +153,9 @@ const CASE_STUDY_CHECKS = [
 ];
 
 export default function HomePage() {
+  const statsRef = useRef(null);
+  const inView = useInView(statsRef, { once: true });
+
   return (
     <main>
       <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-12 overflow-hidden">
@@ -242,43 +238,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#f3f4f5] py-12 sm:py-16 px-4 sm:px-6 md:px-12 border-y border-[#c3c8c0]/10">
+      <section
+        ref={statsRef}
+        className="bg-[#f3f4f5] py-12 sm:py-16 px-4 sm:px-6 md:px-12 border-y border-[#c3c8c0]/10"
+      >
         <div className="max-w-[1440px] mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
             {STATS.map((stat, i) => (
-              <motion.div
+              <StatItem
                 key={stat.label}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-              >
-                <p className="font-heading text-3xl sm:text-4xl font-bold text-[#000000] mb-1">
-                  {stat.value}
-                </p>
-                <p className="font-label text-[10px] sm:text-xs uppercase tracking-widest text-[#434842] font-bold">
-                  {stat.label}
-                </p>
-              </motion.div>
+                value={stat.value}
+                suffix={stat.suffix}
+                label={stat.label}
+                index={i}
+                inView={inView}
+              />
             ))}
           </div>
-          <motion.div
-            className="mt-12 sm:mt-16 flex flex-wrap justify-between items-center gap-6 sm:gap-12 opacity-40 grayscale contrast-125"
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {BRANDS.map((brand) => (
-              <span
-                key={brand}
-                className="font-heading text-lg sm:text-2xl font-bold tracking-tighter"
-              >
-                {brand}
-              </span>
-            ))}
-          </motion.div>
         </div>
       </section>
 
