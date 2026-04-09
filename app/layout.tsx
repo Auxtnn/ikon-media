@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Manrope, Inter, Space_Grotesk, Karla } from "next/font/google";
+import { Space_Grotesk, Karla } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { ClientLayoutWrapper } from "@/components/LayoutWrapper";
 
 const heading = Space_Grotesk({
   subsets: ["latin"],
@@ -42,9 +43,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${heading.variable} ${body.variable}`}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <ClientLayoutWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </ClientLayoutWrapper>
       </body>
     </html>
   );

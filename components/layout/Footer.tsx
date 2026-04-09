@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Globe, Mail } from "lucide-react";
+import Image from "next/image";
+import { Mail, Globe } from "lucide-react";
 import { FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const SERVICES = [
@@ -27,47 +27,53 @@ const LEGAL = [
   { label: "Terms of Service", href: "#" },
   { label: "Cookie Policy", href: "#" },
 ];
+
 const SOCIALS = [
   { icon: FaLinkedin, label: "LinkedIn", href: "#" },
   { icon: FaTwitter, label: "Twitter / X", href: "#" },
   { icon: FaInstagram, label: "Instagram", href: "#" },
-  { icon: Globe, label: "Website", href: "#" },
+  { icon: Globe, label: "Website", href: "https://ikonmedia.agency" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f3f4f5] w-full">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 border-b border-[#c3c8c0]/15">
-          <div className="sm:col-span-2 lg:col-span-4">
-            <Link
-              href="/"
-              className="text-2xl font-black tracking-tighter text-[#0f1f12] hover:opacity-80 transition-opacity inline-block mb-5"
-            >
-              IKON MEDIA
+    <footer className="bg-[#f3f4f5] pt-16 pb-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 border-b border-[#c3c8c0]/20 pb-16">
+          {/* Logo & Description */}
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-block mb-6">
+              <Image
+                src="/logo.png"
+                alt="IKON MEDIA"
+                width={180}
+                height={48}
+                className="h-10 w-auto"
+              />
             </Link>
-            <p className="font-body text-sm text-[#191c1d]/60 leading-relaxed max-w-xs mb-8">
+            <p className="text-sm text-[#434842] leading-relaxed max-w-sm">
               Crafting digital narratives and growth architectures for the
               world&apos;s most ambitious brands. Editorial-first.
               Data-obsessed. Global in scale.
             </p>
 
-            <div className="flex items-center gap-2 mb-8">
+            <div className="flex gap-3 mt-10">
               {SOCIALS.map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-md bg-white border border-[#c3c8c0]/20 flex items-center justify-center text-[#434842] hover:bg-[#0f1f12] hover:text-white hover:border-[#0f1f12] transition-all"
+                  className="w-10 h-10 rounded-2xl bg-white border border-[#c3c8c0]/30 flex items-center justify-center text-[#434842] hover:bg-[#0f1f12] hover:text-white hover:border-[#0f1f12] transition-all duration-200"
                 >
-                  <Icon size={15} />
+                  <Icon size={18} />
                 </a>
               ))}
             </div>
           </div>
 
+          {/* Services */}
           <div className="lg:col-span-2 lg:col-start-6">
-            <h4 className="font-heading font-semibold text-[#0f1f12] text-xs uppercase tracking-widest mb-6">
+            <h4 className="font-label font-bold text-xs uppercase tracking-[0.2em] text-[#0f1f12] mb-6">
               Services
             </h4>
             <ul className="space-y-3">
@@ -75,7 +81,7 @@ export default function Footer() {
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="font-body text-sm text-[#191c1d]/60 hover:text-[#000000] hover:translate-x-1 transition-all duration-200 inline-block"
+                    className="text-sm text-[#434842] hover:text-[#0f1f12] transition-colors block"
                   >
                     {s.label}
                   </Link>
@@ -84,8 +90,9 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Company */}
           <div className="lg:col-span-2">
-            <h4 className="font-heading font-semibold text-[#0f1f12] text-xs uppercase tracking-widest mb-6">
+            <h4 className="font-label font-bold text-xs uppercase tracking-[0.2em] text-[#0f1f12] mb-6">
               Company
             </h4>
             <ul className="space-y-3">
@@ -93,7 +100,7 @@ export default function Footer() {
                 <li key={c.label}>
                   <Link
                     href={c.href}
-                    className="font-body text-sm text-[#191c1d]/60 hover:text-[#000000] hover:translate-x-1 transition-all duration-200 inline-block"
+                    className="text-sm text-[#434842] hover:text-[#0f1f12] transition-colors block"
                   >
                     {c.label}
                   </Link>
@@ -102,30 +109,32 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
-            <h4 className="font-heading font-semibold text-[#0f1f12] text-xs uppercase tracking-widest mb-6">
-              Contact
+          {/* Contact & Legal */}
+          <div className="lg:col-span-3">
+            <h4 className="font-label font-bold text-xs uppercase tracking-[0.2em] text-[#0f1f12] mb-6">
+              Get In Touch
             </h4>
-            <div className="space-y-4 mb-8">
+            <div className="space-y-4">
               <a
                 href="mailto:hello@ikonmedia.agency"
-                className="flex items-center gap-2.5 text-sm text-[#191c1d]/60 hover:text-[#000000] transition-colors font-body"
+                className="flex items-center gap-3 text-sm text-[#434842] hover:text-[#0f1f12] transition-colors"
               >
-                <Mail size={14} className="shrink-0 text-[#768976]" />
+                <Mail size={18} className="text-[#768976]" />
                 hello@ikonmedia.agency
               </a>
               <a
                 href="https://ikonmedia.agency"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-sm text-[#191c1d]/60 hover:text-[#000000] transition-colors font-body"
+                className="flex items-center gap-3 text-sm text-[#434842] hover:text-[#0f1f12] transition-colors"
               >
-                <Globe size={14} className="shrink-0 text-[#768976]" />
+                <Globe size={18} className="text-[#768976]" />
                 ikonmedia.agency
               </a>
             </div>
-            <div className="mt-8">
-              <h4 className="font-heading font-semibold text-[#0f1f12] text-xs uppercase tracking-widest mb-6">
+
+            <div className="mt-12">
+              <h4 className="font-label font-bold text-xs uppercase tracking-[0.2em] text-[#0f1f12] mb-6">
                 Legal
               </h4>
               <ul className="space-y-3">
@@ -133,7 +142,7 @@ export default function Footer() {
                   <li key={l.label}>
                     <Link
                       href={l.href}
-                      className="font-body text-sm text-[#191c1d]/60 hover:text-[#000000] hover:translate-x-1 transition-all duration-200 inline-block"
+                      className="text-sm text-[#434842] hover:text-[#0f1f12] transition-colors block"
                     >
                       {l.label}
                     </Link>
@@ -144,10 +153,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-label text-[10px] font-semibold uppercase tracking-[0.2em] text-[#191c1d]/40">
-            © 2026 IKON MEDIA AGENCY. ALL RIGHTS RESERVED.
-          </p>
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#434842]/60 font-label tracking-widest">
+          <p>© 2026 IKON MEDIA AGENCY. ALL RIGHTS RESERVED.</p>
+          <p className="text-center md:text-right">Built with precision</p>
         </div>
       </div>
     </footer>

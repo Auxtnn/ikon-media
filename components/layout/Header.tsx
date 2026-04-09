@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import {
   ChevronDown,
   Menu,
@@ -59,9 +60,9 @@ const SERVICES = [
 ];
 
 const NAV_LINKS = [
+  { label: "Agency", href: "/about" },
   { label: "Services", href: "/services", hasDropdown: true },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Agency", href: "/about" },
   { label: "Insights", href: "/blog" },
   { label: "Careers", href: "/careers" },
 ];
@@ -111,8 +112,10 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setServicesOpen(false);
+    queueMicrotask(() => {
+      setMobileOpen(false);
+      setServicesOpen(false);
+    });
   }, [pathname]);
 
   useEffect(() => {
@@ -150,17 +153,21 @@ export default function Header() {
         className={clsx(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
-            ? "bg-[#f8f9fa]/90 backdrop-blur-xl shadow-[0_1px_0_rgba(25,28,29,0.06)]"
-            : "bg-[#f8f9fa]/80 backdrop-blur-xl"
+            ? "bg-[#f3f4f5]/95 backdrop-blur-xl shadow-[0_1px_0_rgba(25,28,29,0.08)]"
+            : "bg-[#f3f4f5]/90 backdrop-blur-xl"
         )}
       >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-          <div className="flex items-center justify-between h-[76px]">
-            <Link
-              href="/"
-              className="text-xl font-black tracking-tighter text-[#0f1f12] shrink-0 hover:opacity-80 transition-opacity"
-            >
-              IKON MEDIA
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12">
+          <div className="flex items-center justify-between h-20">
+            <Link href="/" className="shrink-0">
+              <Image
+                src="/logo.png"
+                alt="IKON MEDIA"
+                width={160}
+                height={40}
+                className="h-9 w-auto"
+                priority
+              />
             </Link>
 
             <nav
@@ -198,19 +205,19 @@ export default function Header() {
                           animate="visible"
                           exit="exit"
                           onMouseLeave={() => setServicesOpen(false)}
-                          className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-[640px] bg-white rounded-xl overflow-hidden"
+                          className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-[640px] bg-white rounded-2xl overflow-hidden"
                           style={{
                             boxShadow:
-                              "0 4px 6px rgba(0,0,0,0.04), 0 20px 48px rgba(0,0,0,0.1)",
+                              "0 4px 6px rgba(0,0,0,0.04), 0 20px 48px rgba(0,0,0,0.12)",
                           }}
                         >
-                          <div className="p-2">
-                            <div className="px-4 pt-3 pb-2 mb-1">
+                          <div className="p-6">
+                            <div className="px-2 pb-4">
                               <p className="text-[10px] font-label font-bold uppercase tracking-[0.2em] text-[#747872]">
-                                Our Services
+                                OUR SERVICES
                               </p>
                             </div>
-                            <div className="grid grid-cols-2 gap-0.5">
+                            <div className="grid grid-cols-2 gap-1">
                               {SERVICES.map((service) => {
                                 const Icon = service.icon;
                                 return (
@@ -218,42 +225,25 @@ export default function Header() {
                                     key={service.label}
                                     href={service.href}
                                     onClick={() => setServicesOpen(false)}
-                                    className="flex items-start gap-3 px-4 py-3 rounded-lg hover:bg-[#f3f4f5] transition-colors group"
+                                    className="flex items-start gap-4 px-4 py-4 rounded-xl hover:bg-[#f3f4f5] transition-all group"
                                   >
-                                    <div className="w-8 h-8 rounded-md bg-[#f3f4f5] group-hover:bg-[#0f1f12] flex items-center justify-center shrink-0 mt-0.5 transition-colors">
+                                    <div className="w-9 h-9 rounded-lg bg-[#f3f4f5] group-hover:bg-[#0f1f12] flex items-center justify-center shrink-0 mt-0.5 transition-colors">
                                       <Icon
-                                        size={14}
+                                        size={16}
                                         className="text-[#0f1f12] group-hover:text-white transition-colors"
                                       />
                                     </div>
                                     <div>
-                                      <p className="font-label font-semibold text-sm text-[#000000] leading-tight">
+                                      <p className="font-semibold text-sm text-[#000000]">
                                         {service.label}
                                       </p>
-                                      <p className="font-body text-xs text-[#434842] mt-0.5">
+                                      <p className="text-xs text-[#434842] mt-0.5">
                                         {service.desc}
                                       </p>
                                     </div>
                                   </Link>
                                 );
                               })}
-                            </div>
-                            <div className="mx-2 mt-2 p-4 bg-[#0f1f12] rounded-lg flex items-center justify-between">
-                              <div>
-                                <p className="font-label font-bold text-sm text-white uppercase tracking-wider">
-                                  Full Capabilities
-                                </p>
-                                <p className="font-body text-xs text-[#768976] mt-0.5">
-                                  View our complete service offering
-                                </p>
-                              </div>
-                              <Link
-                                href="/services"
-                                onClick={() => setServicesOpen(false)}
-                                className="flex items-center gap-2 text-[#ffdf95] font-label text-xs font-bold uppercase tracking-wider hover:gap-3 transition-all"
-                              >
-                                Explore <ArrowRight size={12} />
-                              </Link>
                             </div>
                           </div>
                         </motion.div>
@@ -280,113 +270,95 @@ export default function Header() {
             <div className="flex items-center gap-4">
               <Link
                 href="/contact"
-                className="hidden lg:inline-flex bg-[#0f1f12] text-white px-6 py-4 rounded-md font-label font-semibold text-xs uppercase tracking-widest hover:bg-black transition-colors"
+                className="hidden lg:block bg-[#0f1f12] text-white px-8 py-3.5 rounded-xl font-label font-semibold text-xs uppercase tracking-widest hover:bg-black transition-all"
               >
-                Book a Strategy Call
+                Book Strategy Call
               </Link>
 
               <button
-                className="lg:hidden flex items-center justify-center w-10 h-10 rounded-md hover:bg-[#f3f4f5] transition-colors"
+                className="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl hover:bg-[#e7e8e9] transition-colors"
                 onClick={() => setMobileOpen((v) => !v)}
                 aria-label="Toggle menu"
               >
-                {mobileOpen ? (
-                  <X size={20} className="text-[#0f1f12]" />
-                ) : (
-                  <Menu size={20} className="text-[#0f1f12]" />
-                )}
+                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
           </div>
         </div>
       </header>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <>
             <motion.div
-              key="overlay"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/30 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
-              key="menu"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] max-w-sm bg-white flex flex-col lg:hidden"
-              style={{ boxShadow: "-4px 0 40px rgba(0,0,0,0.12)" }}
+              className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] max-w-md bg-white flex flex-col lg:hidden"
             >
-              <div className="flex items-center justify-between px-6 h-[76px] border-b border-[#f3f4f5]">
-                <span className="text-xl font-black tracking-tighter text-[#0f1f12]">
-                  IKON MEDIA
-                </span>
+              <div className="flex items-center justify-between px-6 h-20 border-b border-[#f3f4f5]">
+                <Image
+                  src="/logo.png"
+                  alt="IKON MEDIA"
+                  width={140}
+                  height={36}
+                  className="h-8 w-auto"
+                />
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-[#f3f4f5] transition-colors"
-                  aria-label="Close menu"
+                  className="w-10 h-10 flex items-center justify-center"
                 >
-                  <X size={18} className="text-[#0f1f12]" />
+                  <X size={24} />
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto px-4 py-6">
-                <nav className="space-y-1">
+              <div className="flex-1 overflow-y-auto p-6">
+                <nav className="space-y-2">
                   <button
                     onClick={() => setMobileServicesOpen((v) => !v)}
-                    className="w-full flex items-center justify-between px-4 py-3.5 rounded-lg hover:bg-[#f3f4f5] transition-colors"
+                    className="w-full flex items-center justify-between px-5 py-4 rounded-2xl hover:bg-[#f3f4f5] transition-all"
                   >
-                    <span
-                      className={clsx(
-                        "font-label font-semibold text-sm uppercase tracking-widest",
-                        isActive("/services")
-                          ? "text-[#0f1f12]"
-                          : "text-[#191c1d]/70"
-                      )}
-                    >
+                    <span className="font-label font-semibold text-sm uppercase tracking-widest">
                       Services
                     </span>
                     <ChevronDown
-                      size={16}
+                      size={18}
                       className={clsx(
-                        "text-[#434842] transition-transform duration-200",
-                        mobileServicesOpen ? "rotate-180" : ""
+                        "transition-transform",
+                        mobileServicesOpen && "rotate-180"
                       )}
                     />
                   </button>
 
-                  <AnimatePresence initial={false}>
+                  <AnimatePresence>
                     {mobileServicesOpen && (
                       <motion.div
-                        key="mobile-services"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{
-                          duration: 0.28,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="overflow-hidden"
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
+                        className="overflow-hidden pl-4"
                       >
-                        <div className="pl-4 pb-2 space-y-0.5">
+                        <div className="space-y-1 py-2">
                           {SERVICES.map((service) => {
                             const Icon = service.icon;
                             return (
                               <Link
                                 key={service.label}
                                 href={service.href}
-                                className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-[#f3f4f5] transition-colors"
+                                onClick={() => setMobileOpen(false)}
+                                className="flex items-center gap-4 px-5 py-3 rounded-xl hover:bg-[#f3f4f5]"
                               >
-                                <Icon
-                                  size={14}
-                                  className="text-[#768976] shrink-0"
-                                />
-                                <span className="font-body text-sm text-[#191c1d]">
+                                <Icon size={18} className="text-[#768976]" />
+                                <span className="font-medium text-sm">
                                   {service.label}
                                 </span>
                               </Link>
@@ -397,42 +369,38 @@ export default function Header() {
                     )}
                   </AnimatePresence>
 
+                  {/* Explore All Services Button */}
+                  <Link
+                    href="/services"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-center gap-2 bg-[#c8960c] text-white py-4 rounded-2xl font-label font-semibold text-sm uppercase tracking-widest mt-4 hover:bg-[#b8860b] transition-all"
+                  >
+                    Explore All Services <ArrowRight size={16} />
+                  </Link>
+
                   {NAV_LINKS.filter((l) => !l.hasDropdown).map((link) => (
                     <Link
                       key={link.label}
                       href={link.href}
+                      onClick={() => setMobileOpen(false)}
                       className={clsx(
-                        "flex items-center px-4 py-3.5 rounded-lg hover:bg-[#f3f4f5] transition-colors font-label font-semibold text-sm uppercase tracking-widest",
+                        "block px-5 py-4 rounded-2xl font-label font-semibold text-sm uppercase tracking-widest transition-all",
                         isActive(link.href)
-                          ? "text-[#0f1f12] bg-[#f3f4f5]"
-                          : "text-[#191c1d]/70"
+                          ? "bg-[#f3f4f5] text-[#0f1f12]"
+                          : "hover:bg-[#f3f4f5]"
                       )}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </nav>
-
-                <div className="mt-6 pt-6 border-t border-[#f3f4f5] space-y-2">
-                  <Link
-                    href="/careers"
-                    className="flex items-center px-4 py-3 rounded-lg hover:bg-[#f3f4f5] transition-colors font-label text-sm text-[#191c1d]/60 uppercase tracking-widest"
-                  >
-                    Careers
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="flex items-center px-4 py-3 rounded-lg hover:bg-[#f3f4f5] transition-colors font-label text-sm text-[#191c1d]/60 uppercase tracking-widest"
-                  >
-                    Contact
-                  </Link>
-                </div>
               </div>
 
-              <div className="px-6 py-6 border-t border-[#f3f4f5]">
+              <div className="p-6 border-t border-[#f3f4f5]">
                 <Link
                   href="/contact"
-                  className="flex items-center justify-center w-full bg-[#0f1f12] text-white py-4 rounded-md font-label font-bold text-sm uppercase tracking-widest hover:bg-black transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                  className="block w-full bg-[#0f1f12] text-white py-4 rounded-2xl font-label font-semibold text-sm uppercase tracking-widest text-center hover:bg-black transition-all"
                 >
                   Book a Strategy Call
                 </Link>

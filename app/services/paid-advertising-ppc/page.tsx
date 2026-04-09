@@ -158,7 +158,7 @@ export default function PPCPage() {
               </button>
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-4">
-                  <div className="w-10 h-10 rounded-full border-2 border-white bg-[#edeeef] overflow-hidden">
+                  <div className="w-10 h-10 relative rounded-full border-2 border-white bg-[#edeeef] overflow-hidden">
                     <Image
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9MFYZ9qKtXj4mPxSuyJt2W5M_mV1UUPb_tIK6JF3wgEc80yFNA3Rh4gSKBj54m8woGYEc3GOwDUp2N9CN-d5ga-Z6f2NfRkW302mtN6zFWP_c2nbQiCQhxzmrz9G9nh19gs6Glf-wSVi_OiWL_qK-HhmvyMdZk7kkfBMKxCUpplvJH-KkiZesFHxzypG1S7SCuN-x27T_1A1gLNSv2xAzkPqYkkUXRePSLnDJxM1TeC0VQkz5-1IzGNN-QBPErSvftP6SJJXjNf8"
                       alt="Professional male executive"
@@ -166,7 +166,7 @@ export default function PPCPage() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="w-10 h-10 rounded-full border-2 border-white bg-[#edeeef] overflow-hidden">
+                  <div className="w-10 h-10 relative rounded-full border-2 border-white bg-[#edeeef] overflow-hidden">
                     <Image
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4VHxkhjXY6byRKZAN2OH75crC107McanaGkvDTxLjUKGkSuHCKrG4QCQmM4kxh7QhMtBXgMsNMtxiWz3J_zfvKsNkEsdODFWBIojOOq8aHGGdRmyxjzILx8dNOS81dfGMF3YN8exjkyYq4QXUd6bOjgCn49M5oNajvGim3LSLEal7SqbB3UNvmctAtGooCnl5NA7mAyQO5J5LUqt3RMQ7HGGgk5hcPJhd16My-AOvlrrgq1KUAc6Bw_-S4zryptRU89NH4ySb9aM"
                       alt="Confident female founder"
@@ -187,7 +187,7 @@ export default function PPCPage() {
 
           <div className="md:col-span-4 flex items-end mt-10 md:mt-0">
             <motion.div
-              className="w-full relative aspect-[3/4] bg-[#0f1f12] rounded-xl relative overflow-hidden group"
+              className="w-full relative aspect-[3/4] bg-[#0f1f12] rounded-xl overflow-hidden group"
               variants={scaleIn}
               initial="hidden"
               animate="visible"
@@ -411,7 +411,7 @@ export default function PPCPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
                 <div className="space-y-6">
                   <motion.div
-                    className="aspect-square bg-white rounded-xl overflow-hidden p-1"
+                    className="aspect-square relative bg-white rounded-xl overflow-hidden p-1"
                     style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}
                     variants={scaleIn}
                     initial="hidden"
@@ -446,7 +446,7 @@ export default function PPCPage() {
 
                 <div className="space-y-6">
                   <motion.div
-                    className="aspect-[4/5] bg-[#c8960c] rounded-xl overflow-hidden p-1"
+                    className="aspect-[4/5] relative bg-[#c8960c] rounded-xl overflow-hidden p-1"
                     style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}
                     variants={scaleIn}
                     initial="hidden"
@@ -491,7 +491,7 @@ export default function PPCPage() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden shrink-0">
+            <div className="w-32 relative h-32 md:w-48 md:h-48 rounded-full overflow-hidden shrink-0">
               <Image
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeRnt_kRcOs9QRJZSIvGY_iL8NLLeOdISjNeQvkEV5GuFGk4dfMa-FBxqNmWmCAn4z3eL1uyp6wmET3rYVxq6SukbY9uOj4Nz0PiJs4OoVlYC9NHPjTt9GEMIi2X7BJVZuKhqEGuRdwjMw3E6JB67MORj122TL6bYuOvd7G8tm-7WxqKb3KZjeKOh---fXD4y_Q4m1w30XdN9GQLIyhApMQpSR_WQDd9GlJxerfHzdrE-N3wVDj8XZ8Jr-Cg_Gz4WoMzlAsccsXr4"
                 alt="Close-up portrait of a successful tech founder"
